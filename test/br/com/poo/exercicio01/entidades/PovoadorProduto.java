@@ -1,10 +1,10 @@
-package com.poo.exercicio01.util.povoador;
+package br.com.poo.exercicio01.entidades;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.poo.exercicio01.model.Produto;
+import br.com.poo.exercicio01.entidades.Produto;
 
 public class PovoadorProduto {
 	static int contador = 0;

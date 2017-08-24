@@ -1,4 +1,4 @@
-package com.poo.exercicio01.model;
+package br.com.poo.exercicio01.entidades;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,14 +9,12 @@ public class NotaFiscal {
 	private Calendar dataEmissao;
 	private List<ItemNotaFiscal> itens = new ArrayList<>();
 	private Cliente cliente;
-	private Produto produto;
 
 	public NotaFiscal(Calendar dataEmissao, List<ItemNotaFiscal> itens, Cliente cliente, Produto produto) {
 		// super();
 		this.dataEmissao = dataEmissao;
 		this.itens = itens;
 		this.cliente = cliente;
-		this.produto = produto;
 	}
 
 	public Calendar getDataEmissao() {
@@ -43,22 +41,6 @@ public class NotaFiscal {
 		this.cliente = cliente;
 	}
 
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
-
-	public Double calcularValorTotal() {
-		Double valorTotal = 0.00;
-		for (ItemNotaFiscal itemNotaFiscal : itens) {
-			valorTotal += itemNotaFiscal.calcularValorTotal();
-		}
-		return valorTotal;
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -83,12 +65,15 @@ public class NotaFiscal {
 				return false;
 		} else if (!itens.equals(other.itens))
 			return false;
-		if (produto == null) {
-			if (other.produto != null)
-				return false;
-		} else if (!produto.equals(other.produto))
-			return false;
 		return true;
+	}
+
+	public Double calcularValorTotal() {
+		Double valorTotal = 0.00;
+		for (ItemNotaFiscal itemNotaFiscal : itens) {
+			valorTotal += itemNotaFiscal.calcularValorTotal();
+		}
+		return valorTotal;
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.poo.exercicio01.util.povoador;
+package br.com.poo.exercicio01.entidades;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 
-import com.poo.exercicio01.model.Cliente;
+import br.com.poo.exercicio01.entidades.Cliente;
 
 public class PovoadorCliente {
 	static int contador = 0;
@@ -15,12 +15,20 @@ public class PovoadorCliente {
 		Random r = new Random();
 		contador++;
 
-		Integer ano = 1900 + r.nextInt() * 2017;
-		Integer mes = 1 + r.nextInt() * 12;
-		Integer dia = 1 + r.nextInt() * 30;
+		Integer ano = 0;
+		while (ano < 1917) {
+			ano = r.nextInt(2016);
+		}
+		Integer mes = r.nextInt(12);
+		Integer dia = r.nextInt(30);
+
+		// Testar Equals com sucesso.
+		// Calendar dataNascimento = new GregorianCalendar(1984, 06, 02);
+		// Cliente cliente = new Cliente("Cliente1 ", dataNascimento);
 
 		Calendar dataNascimento = new GregorianCalendar(ano, mes, dia);
 		Cliente cliente = new Cliente("Cliente " + contador, dataNascimento);
+
 		return cliente;
 	}
 

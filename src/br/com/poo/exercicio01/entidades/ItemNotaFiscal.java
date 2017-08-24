@@ -1,4 +1,4 @@
-package com.poo.exercicio01.model;
+package br.com.poo.exercicio01.entidades;
 
 public class ItemNotaFiscal {
 
@@ -6,9 +6,8 @@ public class ItemNotaFiscal {
 	private Double valorUnitario;
 	private Produto produto;
 
-	
 	public ItemNotaFiscal(Integer quantidade, Double valorUnitario, Produto produto) {
-//		super();
+		// super();
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
 		this.produto = produto;
@@ -41,4 +40,32 @@ public class ItemNotaFiscal {
 	public Double calcularValorTotal() {
 		return this.getQuantidade() * this.getValorUnitario();
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ItemNotaFiscal other = (ItemNotaFiscal) obj;
+		if (produto == null) {
+			if (other.produto != null)
+				return false;
+		} else if (!produto.equals(other.produto))
+			return false;
+		if (quantidade == null) {
+			if (other.quantidade != null)
+				return false;
+		} else if (!quantidade.equals(other.quantidade))
+			return false;
+		if (valorUnitario == null) {
+			if (other.valorUnitario != null)
+				return false;
+		} else if (!valorUnitario.equals(other.valorUnitario))
+			return false;
+		return true;
+	}
+
 }
